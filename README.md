@@ -35,9 +35,11 @@ This action takes the file path, app category & API key as input and submits the
 
 ## Example usage
 
+** Note: ** the example assumes you have an environmental variable called env.path-to-file which you previously set to the binary you wish to submit for analysis. (i.e. app-release.apk)
+
 jobs:
 
-	kryptowire_analysis_job:
+	safe_app_portal_analysis_job:
 		runs-on: ubuntu-latest
 		name: Submit app to Safe App Portal
 		steps:
