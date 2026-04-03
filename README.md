@@ -7,8 +7,8 @@ This action takes the file path, app category & API key as input and submits the
 ### Set API Key
 
 - Go to **Settings**
-- Select **Secrets** under left column
-- Click on **New Secret**
+- Select **Secrets and variables** under left column, and then select the **Actions** subheading
+- In the **Repository Secrets** section click on **New repository secret**
 - Provide **Name: SAP_API_KEY** & **Value** as your own Safe App Portal API Key
 - Click on **Add Secret**
 
@@ -31,21 +31,20 @@ This action takes the file path, app category & API key as input and submits the
 
 ### `Quokka UUID`
 
-UUID of the submitted app for analysis.
+**Safe App Portal Results URL**:  the URL where you can access the scan progress and results.
 
 ## Example usage
 
-steps:
-
-    - uses: actions/download-artifact@v2
+jobs:
+  kryptowire_analysis_job:
+    runs-on: ubuntu-latest
+    name: Submit app to Safe App Portal
+    steps:
+        - name: CSA Safe App Portal Analysis Submission
+        uses: ./ # Uses an action in the root directory
+        id: appSubmit
         with:
-            name: app # Name of artifact holding the app file
-            path: path/to/artifact
-
-    - name: Kryptowire Analysis Submission
-        id: appSubmission
-        uses: pkumar001/kryptowire-analysis-action@master
-        with:
-            path-to-file: path/to/artifact/app-prod-debug.apk
-            platform: "android"
-            apiKey: ${{ secrets.KRYPTOWIRE_API_KEY }}
+          path-to-file: ${{ env.path-to-file }}
+          #category: select from the following list: ALL, ART_AND_DESIGN, AUTO_AND_VEHICLES, BEAUTY, BOOKS_AND_REFERENCE, BUSINESS, COMICS, COMMUNICATION, DATING, EDUCATION, ENTERTAINMENT, EVENTS, FINANCE, FOOD_AND_DRINK, GAME_ACTION, GAME_ADVENTURE, GAME_ARCADE, GAME_BOARD, GAME_CARD, GAME_CASINO, GAME_CASUAL, GAME_EDUCATIONAL, GAME_MUSIC, GAME_PUZZLE, GAME_RACING, GAME_ROLE_PLAYING, GAME_SIMULATION, GAME_SPORTS, GAME_STRATEGY, GAME_TRIVIA, GAME_WORD, HEALTH_AND_FITNESS, HOUSE_AND_HOME, LIBRARIES_AND_DEMO, LIFESTYLE, MAPS_AND_NAVIGATION, MEDICAL, MUSIC_AND_AUDIO, NEWS_AND_MAGAZINES, PARENTING, PERSONALIZATION, PHOTOGRAPHY, PRODUCTIVITY, SHOPPING, SOCIAL, SPORTS, TOOLS, TRAVEL_AND_LOCAL, VIDEO_PLAYERS, WEATHER"
+          category: "PRODUCTIVITY" 
+          apiKey: ${{ secrets.SAP_API_KEY }}
