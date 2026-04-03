@@ -1,5 +1,6 @@
 const core = require("@actions/core");
-const github = require("@actions/github");
+//const { getOctokit, context } = require('@actions/github');
+//const github = require("@actions/github");
 const fs = require("fs");
 const FormData = require("form-data");
 const request = require("request")
@@ -27,7 +28,7 @@ async function run() {
       "file": fs.createReadStream( pathToFile ),
       "category": category
     }
-    const theHeaders {
+    const theHeaders = {
        'Authorization':"Bearer " + apiKey
     }
 
