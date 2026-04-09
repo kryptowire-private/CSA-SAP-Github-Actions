@@ -1,6 +1,6 @@
-name: "CSA Safe App Portal"
+name: "Singapore CSA Safe App Portal"
 description: "Scan your applications on Singapore CSA's Safe App Portal, powered by Quokka."
-author: "Quokka"
+author: "Quokka (Kryptowire)"
 inputs:
   path-to-file:
     description: "Path to the artifact file"
