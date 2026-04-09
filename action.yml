@@ -1,5 +1,5 @@
-name: "CSA Safe App Portal MAST"
-description: "Scan your applications on CSA Safe App Portal's Mobile Application Security Testing Platform, powered by Quokka."
+name: "CSA Safe App Portal"
+description: "Scan your applications on Singapore CSA's Safe App Portal, powered by Quokka."
 author: "Quokka"
 inputs:
   path-to-file:
