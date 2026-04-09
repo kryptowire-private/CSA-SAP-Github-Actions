@@ -41,7 +41,7 @@ jobs:
 
 	safe_app_portal_analysis_job:
 		runs-on: ubuntu-latest
-		name: Submit app to Safe App Portal
+		name: Singapore CSA Safe App Portal
 		steps:
 			- name: CSA Safe App Portal Analysis Submission
 			uses: ./ # Uses an action in the root directory
